@@ -13,7 +13,7 @@ public class MicroTime {
     native public static long currentTimeMicros();
 
     public static void main(String[] args) {
-        System.out.println(System.getProperty("os.arch"));
+        System.out.println(Native.arch());
         System.out.println(MicroTime.currentTimeMicros());
         benchmark("Warmup");
         benchmark("Real");

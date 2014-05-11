@@ -12,6 +12,9 @@ OS=$(shell uname | sed -e 's/CYGWIN.*/win32/g' \
 
 ARCH=$(shell uname -m)
 
+# After some struggle...
+JAVA_HOME=$(shell mvn -v | grep 'Java home' | cut -d' ' -f3)/..
+
 LD_FLAGS=-shared
 
 ifeq ($(OS),linux)
