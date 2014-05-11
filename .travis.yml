@@ -2,5 +2,7 @@ language: java
 jdk:
   - openjdk7
 
+install: # nothing to install
 before_script: make java native
+script: # not testing with maven
 after_success: make test
