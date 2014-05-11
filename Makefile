@@ -37,14 +37,14 @@ JAR=microtime-1.0-SNAPSHOT.jar
 LIBRARY=libmicrotime$(LIBSFX)
 LIBRARY_PATH=$(OS)/$(ARCH)/$(LIBRARY)
 
-# makes platform independent parts
+# make jar
 java:
 	mvn package
-	javah -d $(BUILD) -classpath $(BUILD)/$(JAR) microtime.MicroTime
 
-# adds platform sepcific parts
+# compile and add platform sepcific parts to jar
 native:
 	mkdir -p $(BUILD)/$(OS)/$(ARCH)
+	javah -d $(BUILD) -classpath $(BUILD)/$(JAR) microtime.MicroTime
 	gcc $(PCFLAGS) $(LD_FLAGS) $(SOURCES) $(JAVAH_INCLUDES) $(JAVA_INCLUDES) -o $(BUILD)/$(LIBRARY_PATH)
 	jar uf $(BUILD)/$(JAR) -C $(BUILD) $(LIBRARY_PATH)
 
